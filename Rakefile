@@ -12,7 +12,8 @@ begin
     gem.authors = ["gabrielg"]
     gem.add_development_dependency "riot", ">= 0"
     gem.add_development_dependency "yard", ">= 0"
-    # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
+    gem.add_dependency "mongoid", ">=1.2.7"
+    gem.add_dependency "riot",    ">=0.10.12"
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
