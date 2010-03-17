@@ -1,3 +1,5 @@
+require 'riot'
+
 module RiotMongoid
   class HasFieldAssertion < Riot::AssertionMacro
     register :has_field
