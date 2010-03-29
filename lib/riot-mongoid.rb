@@ -1,4 +1,9 @@
 require 'riot'
+require 'mongoid'
+
+Mongoid::Field.module_eval do
+  attr_reader :accessible
+end
 
 module RiotMongoid
   class HasFieldAssertion < Riot::AssertionMacro
