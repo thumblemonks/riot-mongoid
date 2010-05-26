@@ -9,8 +9,8 @@ module RiotMongoid
       end
       options ||= {}
       case
-      when validation_name.nil?
-        fail("validation name and potential options must be specified with this assertion macro")
+      when validation_name.nil? || validation_type.nil?
+        fail("validation name, type and potential options must be specified with this assertion macro")
       when validation.nil?
         fail("expected #{model} to have validation on #{validation_name} of type #{validation_type}")
       else
