@@ -26,8 +26,12 @@ context "has_validation macro" do
   end.matches(/has 'validates_presence_of' validation 'name'/)
 
   asserts "passes when the validation options is specified" do
-    RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :surname, :within => 4..40).last
-  end
+    RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :surname, :within => 4..40).first
+  end.equals(:pass)
+
+  asserts "passes when the validation options is specified and doesn't match" do
+    RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :surname, :within => 3..30).first
+  end.equals(:fail)
 
   asserts "fails when invalid field options are specified" do
     RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :type => Date).first
