@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["gabrielg"]
-  s.date = %q{2010-05-26}
+  s.date = %q{2010-06-08}
   s.description = %q{A collection of assertion macros for testing Mongoid with Riot}
   s.email = %q{gabriel.gironda@gmail.com}
   s.extra_rdoc_files = [
@@ -26,9 +26,12 @@ Gem::Specification.new do |s|
      "lib/riot-mongoid.rb",
      "lib/riot-mongoid/has_association.rb",
      "lib/riot-mongoid/has_field.rb",
+     "lib/riot-mongoid/has_key.rb",
      "lib/riot-mongoid/has_validation.rb",
+     "riot-mongoid.gemspec",
      "test/has_association_test.rb",
      "test/has_field_test.rb",
+     "test/has_key_test.rb",
      "test/has_validation_test.rb",
      "test/teststrap.rb"
   ]
@@ -40,6 +43,7 @@ Gem::Specification.new do |s|
   s.test_files = [
     "test/has_association_test.rb",
      "test/has_field_test.rb",
+     "test/has_key_test.rb",
      "test/has_validation_test.rb",
      "test/teststrap.rb"
   ]
