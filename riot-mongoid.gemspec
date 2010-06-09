@@ -14,13 +14,12 @@ Gem::Specification.new do |s|
   s.email = %q{gabriel.gironda@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
-     "README.rdoc"
+     "README.md"
   ]
   s.files = [
     ".document",
      ".gitignore",
      "LICENSE",
-     "README.rdoc",
      "Rakefile",
      "VERSION",
      "lib/riot-mongoid.rb",
