@@ -34,7 +34,7 @@ context "has_validation macro" do
   end.equals(:fail)
 
   asserts "fails when invalid field options are specified" do
-    RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :type => Date).first
+    RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :name, :type => Date).first
   end.equals(:fail)
 
   asserts "passes when another validation is specified" do
