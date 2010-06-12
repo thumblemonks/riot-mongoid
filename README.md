@@ -16,7 +16,8 @@ Riot assertions for Mongoid
         # association assertions
         asserts_topic.has_association :belongs_to_related, :account
         asserts_topic.has_association :has_many_related, :comments
-
+        asserts_topic.has_association :embedded_in, :person, :inverse_of => :address
+        
         # validation assertions
         asserts_topic.has_validation :validates_presence_of, :caption
         

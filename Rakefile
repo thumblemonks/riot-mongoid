@@ -1,24 +1,8 @@
 require 'rubygems'
 require 'rake'
+require 'mg'
 
-begin
-  require 'jeweler'
-  Jeweler::Tasks.new do |gem|
-    gem.name = "riot-mongoid"
-    gem.summary = %Q{Riot assertions for Mongoid}
-    gem.description = %Q{A collection of assertion macros for testing Mongoid with Riot}
-    gem.email = "gabriel.gironda@gmail.com"
-    gem.homepage = "http://github.com/gabrielg/riot-mongoid"
-    gem.authors = ["gabrielg"]
-    gem.add_development_dependency "riot", ">= 0"
-    gem.add_development_dependency "yard", ">= 0"
-    gem.add_dependency "mongoid", ">=1.2.7"
-    gem.add_dependency "riot",    ">=0.10.12"
-  end
-  Jeweler::GemcutterTasks.new
-rescue LoadError
-  puts "Jeweler (or a dependency) not available. Install it with: gem install jeweler"
-end
+MG.new("riot-mongoid.gemspec")
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
@@ -39,8 +23,6 @@ rescue LoadError
     abort "RCov is not available. In order to run rcov, you must: sudo gem install spicycode-rcov"
   end
 end
-
-task :test => :check_dependencies
 
 task :default => :test
 
