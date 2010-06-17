@@ -2,7 +2,7 @@ require 'rubygems'
 require 'rake'
 require 'mg'
 
-MG.new("riot-mongoid.gemspec")
+MG.new(File.join(File.dirname(__FILE__),"riot-mongoid.gemspec"))
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|
