@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{riot-mongoid}
-  s.version = "1.1.3"
+  s.version = "1.1.4"
   s.required_rubygems_version = ">= 1.3.6"
   s.authors = ["gabrielg"]
   s.date = Time.now.strftime("%Y-%m-%d")
