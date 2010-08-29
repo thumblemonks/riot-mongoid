@@ -7,7 +7,6 @@ module RiotMongoid
       type = validation_type.to_s
       %w{validates_ _of}.each { |part| type.gsub!(%r{#{part}},'') }
       validation = model.validators_on(validation_field).detect do |valid|
-        puts valid.class.name ; puts type.capitalize
         valid.class.name =~ %r{#{type.capitalize}}
       end
       options ||= {}
