@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.description = %q{A collection of assertion macros for testing Mongoid with Riot}
   s.email = %q{gabriel.gironda@gmail.com}
   s.extra_rdoc_files = ["README.md"]
-  s.files = %w{.document .gitignore LICENSE VERSION README.md Rakefile riot-mongoid.gemspec} + Dir.glob("{lib,test}/**/*")
+  s.files = %w{LICENSE README.md Rakefile riot-mongoid.gemspec} + Dir.glob("{lib,test}/**/*")
   s.homepage = %q{http://github.com/thumblemonks/riot-mongoid}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
