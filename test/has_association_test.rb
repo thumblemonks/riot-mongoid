@@ -5,8 +5,7 @@ context "has_association macro" do
     test = mock_model do
       embeds_many :things
       embedded_in :another_thing, :inverse_of => :word
-      has_many_related :relations
-      has_many_related :reporters, :klass => 'Person'
+      references_many :relations
     end
   end
 
@@ -22,8 +21,8 @@ context "has_association macro" do
     RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :embedded_in, :another_thing, :inverse_of => :word).last
   end.matches(/has 'embedded_in' association 'another_thing' with options \{:inverse_of=>:word\}/)
 
-  asserts "passes when the no association options are specified for a has_many_related" do
-    RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :has_many_related, :relations).first
+  asserts "passes when the association options are specified for a has_many_related" do
+    RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :references_many, :relations).first
   end.equals(:pass)
 
   asserts "passes when the association options are specified for a has_many_related" do
@@ -31,7 +30,7 @@ context "has_association macro" do
   end.equals(:pass)
   
   asserts "fails when no association name is specified" do
-    RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :has_many).first
+    RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :has_many_related).first
   end.equals(:fail)
 
 end
