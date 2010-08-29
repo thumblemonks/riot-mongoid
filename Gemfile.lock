@@ -1,0 +1,29 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    activesupport (2.3.8)
+    bson (1.0.7)
+    durran-validatable (2.0.1)
+    mongo (1.0.8)
+      bson (>= 1.0.5)
+    mongoid (1.9.1)
+      activesupport (<= 3.0.0)
+      bson (~> 1.0.1)
+      durran-validatable (>= 2.0.1)
+      mongo (~> 1.0.1)
+      will_paginate (< 2.9)
+    riot (0.11.3)
+      rr
+      term-ansicolor
+    rr (1.0.0)
+    term-ansicolor (1.0.5)
+    will_paginate (2.3.14)
+    yard (0.5.8)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  mongoid (= 1.9.1)
+  riot (>= 0.11.3)
+  yard (>= 0.5.8)
