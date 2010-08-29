@@ -25,10 +25,6 @@ context "has_association macro" do
     RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :references_many, :relations).first
   end.equals(:pass)
 
-  asserts "passes when the association options are specified for a has_many_related" do
-    RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :has_many_related, :reporters, :klass => 'Person').first
-  end.equals(:pass)
-  
   asserts "fails when no association name is specified" do
     RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :has_many_related).first
   end.equals(:fail)

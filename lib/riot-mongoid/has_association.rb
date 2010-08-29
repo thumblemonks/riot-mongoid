@@ -11,7 +11,7 @@ module RiotMongoid
       elsif assoc.nil? || assoc.macro != assoc_type.to_sym
         fail("expected #{model} to have association #{assoc_name} of type #{assoc_type}")
       else
-        options_valid = options.all? { |key,value| assoc.options.instance_variable_get("@attributes")[key] == value }
+        options_valid = options.all? { |key,value| assoc.send(key) == value }
         options_valid ? pass("#{model} has '#{assoc_type}' association '#{assoc_name}' with options #{options.inspect}") :
                         fail("expected model to have options #{options.inspect} on association #{assoc_name}")
       end
