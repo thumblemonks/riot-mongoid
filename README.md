@@ -27,6 +27,21 @@ Riot assertions for Mongoid
     end
     
 
+## Mongoid 1.9.1/ Mongoid2.0.0beta+
+
+To use riot-mongoid with Mongoid 1.9.1 do:
+
+    gem install riot-mongoid
+    
+or check out the [legacy branch](http://github.com/thumblemonks/riot-mongoid/tree/legacy)
+    
+To use riot-mongoid with Mongoid 2.0.0.beta+ do:
+
+    gem install riot-mongoid --pre
+
+or check out the [master branch](http://github.com/thumblemonks/riot-mongoid)
+
+
 ## Note on Patches/Pull Requests
  
 * Fork the project.
