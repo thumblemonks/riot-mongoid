@@ -6,7 +6,7 @@ module RiotMongoid
       validation_type, validation_field, options = validation_macro_info
       type = validation_type.to_s
       %w{validates_ _of}.each { |part| type.gsub!(%r{#{part}},'') }
-      validation = model.validators_on(validation_field).detect do |valid|
+      validation = model._validators[validation_field].detect do |valid|
         valid.class.name =~ %r{#{type.capitalize}}
       end
       options ||= {}
