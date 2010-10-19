@@ -3,14 +3,16 @@ require File.join(File.dirname(__FILE__),'teststrap')
 context "has_validation macro" do
   setup do
     mock_model do
-      field :name, :type => String
-      field :rad,  :type => Boolean, :default => false
+      field :name,    :type => String
+      field :rad,     :type => Boolean, :default => false
       field :surname, :type => String
-      field :role, :with => /[A-Za-z]/
+      field :caption, :type => String
+      field :role,    :with => /[A-Za-z]/
 
-      validates_presence_of :name, :surname
-      validates_length_of :surname, :within => 4..40
-      validates_format_of :role,     :with => /[A-Za-z]/
+      validates_presence_of   :name,     :surname
+      validates_length_of     :surname,  :within  => 4..40
+      validates_length_of     :caption,  :minimum => 2
+      validates_format_of     :role,     :with    => /[A-Za-z]/
       validates_uniqueness_of :rad
     end
   end
@@ -29,6 +31,10 @@ context "has_validation macro" do
 
   asserts "passes when the validation options is specified using within" do
     RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :surname, :within => 4..40).first
+  end.equals(:pass)
+
+  asserts "passes when validation_length_of has an option" do 
+    RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :caption, :minimum => 2).first
   end.equals(:pass)
 
   asserts "passes when the validation options is specified" do

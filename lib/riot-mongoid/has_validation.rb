@@ -15,7 +15,7 @@ module RiotMongoid
         fail("validation field, type and potential options must be specified with this assertion macro")
       when validation.nil?
         fail("expected #{model} to have validation on #{validation_field} of type #{validation_type}")
-      when (validation.class.name =~ %r{Length} and options.any?)
+      when (validation.class.name =~ %r{Length} and options[:within])
         range = options[:within].to_a
         if (validation.options[:minimum] == range.first) and (validation.options[:maximum] == range.last)
           pass("#{model} has '#{validation_type}' validation '#{validation_field}' with options #{options.inspect}")
