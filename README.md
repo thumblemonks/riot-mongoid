@@ -7,16 +7,16 @@ Riot assertions for Mongoid
     context "Photo Model" do
 
       context 'definition' do
-        setup { Photo.new }
+        setup { Photo }
 
         # field associations
-        asserts_topic.has_field :title,       :type => String
-        asserts_topic.has_field :caption,     :type => String, :default => ""
+        asserts_topic.has_field :title,   :type => String
+        asserts_topic.has_field :caption, :type => String, :default => ""
 
         # association assertions
-        asserts_topic.has_association :belongs_to_related, :account
-        asserts_topic.has_association :has_many_related, :comments
-        asserts_topic.has_association :embedded_in, :person, :inverse_of => :address
+        asserts_topic.has_association :referenced_in,   :account
+        asserts_topic.has_association :references_many, :comments
+        asserts_topic.has_association :embedded_in,     :customer, :class_name => "Person"
 
         # validation assertions
         asserts_topic.has_validation :validates_presence_of, :caption
@@ -30,7 +30,7 @@ Riot assertions for Mongoid
     end
 
 
-## Mongoid 1.9.1/ Mongoid2.0.0beta+
+## Mongoid 1.9.1/ Mongoid2.0.0beta+ / Mongoid2.0.0.rc.7
 
 To use riot-mongoid with Mongoid 1.9.1 do:
 
@@ -40,10 +40,15 @@ or check out the [legacy branch](http://github.com/thumblemonks/riot-mongoid/tre
 
 To use riot-mongoid with Mongoid 2.0.0.beta+ do:
 
+    gem install riot-mongoid -v 2.0.0.beta.2
+
+or check out the [beta20 branch](http://github.com/thumblemonks/riot-mongoid/tree/beta20)
+
+For Mongoid 2.0.0.rc.7 do:
+
     gem install riot-mongoid --pre
 
 or check out the [master branch](http://github.com/thumblemonks/riot-mongoid)
-
 
 ## Note on Patches/Pull Requests
 
@@ -57,4 +62,4 @@ or check out the [master branch](http://github.com/thumblemonks/riot-mongoid)
 
 ## Copyright
 
-Copyright (c) 2010 gabrielg. See LICENSE for details.
+Copyright (c) 2011 gabrielg. See LICENSE for details.
