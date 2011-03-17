@@ -1,8 +1,5 @@
-require 'rubygems'
-require 'rake'
-require 'mg'
-
-MG.new(File.join(File.dirname(__FILE__),"riot-mongoid.gemspec"))
+require 'bundler'
+Bundler::GemHelper.install_tasks
 
 require 'rake/testtask'
 Rake::TestTask.new(:test) do |test|

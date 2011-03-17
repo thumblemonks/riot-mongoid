@@ -1,31 +1,32 @@
+PATH
+  remote: .
+  specs:
+    riot-mongoid (2.0.0.beta.2)
+      mongoid (~> 2.0.0.beta.rc.7)
+      riot (~> 0.12.3)
+
 GEM
   remote: http://rubygems.org/
   specs:
-    activemodel (3.0.0)
-      activesupport (= 3.0.0)
+    activemodel (3.0.5)
+      activesupport (= 3.0.5)
       builder (~> 2.1.2)
-      i18n (~> 0.4.1)
-    activesupport (3.0.0)
-    bson (1.0.4)
+      i18n (~> 0.4)
+    activesupport (3.0.5)
+    bson (1.2.4)
     builder (2.1.2)
-    i18n (0.4.1)
-    mg (0.0.8)
-      rake
-    mongo (1.0.7)
-      bson (>= 1.0.4)
-    mongoid (2.0.0.beta.17)
-      activemodel (~> 3.0.0)
-      bson (= 1.0.4)
-      mongo (= 1.0.7)
+    i18n (0.5.0)
+    mongo (1.2.4)
+      bson (>= 1.2.4)
+    mongoid (2.0.0.rc.7)
+      activemodel (~> 3.0)
+      mongo (~> 1.2)
       tzinfo (~> 0.3.22)
       will_paginate (~> 3.0.pre)
-    rake (0.8.7)
-    riot (0.11.3)
+    riot (0.12.3)
       rr
-      term-ansicolor
-    rr (1.0.0)
-    term-ansicolor (1.0.5)
-    tzinfo (0.3.23)
+    rr (1.0.2)
+    tzinfo (0.3.25)
     will_paginate (3.0.pre2)
     yard (0.5.8)
 
@@ -33,7 +34,5 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  mg (>= 0.0.8)
-  mongoid (>= 2.0.0.beta.17)
-  riot (>= 0.11.3)
-  yard (>= 0.5.8)
+  riot-mongoid!
+  yard
