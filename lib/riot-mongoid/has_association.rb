@@ -4,7 +4,7 @@ module RiotMongoid
 
     def evaluate(model, *association_macro_info)
       assoc_type, assoc_name, options = association_macro_info
-      assoc = model.associations[assoc_name.to_s]
+      assoc = model.relations[assoc_name.to_s]
       options ||= {}
       if assoc_name.nil?
         fail("association name and potential options must be specified with this assertion macro")
