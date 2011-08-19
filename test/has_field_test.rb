@@ -13,7 +13,7 @@ context "has_field macro" do
 
   asserts "returns useful message" do
     RiotMongoid::HasFieldAssertion.new.evaluate(topic, :name, :type => String).last
-  end.matches(/has field 'name' with options \{:type=>String\}/)
+  end.matches(/Class has field :name with options \{:type=>String\}/)
 
   asserts "fails when invalid field options are specified" do
     RiotMongoid::HasFieldAssertion.new.evaluate(topic, :name, :type => Date).first

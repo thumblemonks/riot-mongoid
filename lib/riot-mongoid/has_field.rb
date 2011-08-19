@@ -2,18 +2,20 @@ module RiotMongoid
   class HasFieldAssertion < Riot::AssertionMacro
     register :has_field
 
-    def evaluate(model, *macro_info)
-      field_name, options = macro_info
-      field = model.fields[field_name.to_s]
-      # if options.nil? || options.empty?
-      #   fail("field options must be specified with this assertion macro")
-      if field.nil?
-        fail("expected #{model} to have field #{field_name}")
-      else
-        options_valid = options.all? { |key,value| field.send(key) == value }
-        options_valid ? pass("#{model} has field '#{field_name}' with options #{options.inspect}") :
-                        fail("expected model to have options #{options.inspect} on field #{field_name}")
+    def evaluate(model, field_name, options = {})
+      fail_msg = "expected #{model.class.to_s} to have field :#{field_name}"
+      pass_msg = "#{model.class.to_s} has field :#{field_name}"
+      opt_msg  = " with options #{options.inspect}"
+      field    = model.fields[field_name.to_s]
+
+      return fail(fail_msg) if field.nil?
+
+      unless options.empty?
+        return fail(fail_msg + opt_msg) unless options.all? { |k,v| field.send(k) == v }
+        return pass(pass_msg + opt_msg)
       end
+
+      pass pass_msg
     end
   end
 end
