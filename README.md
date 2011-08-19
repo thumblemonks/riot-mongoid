@@ -4,6 +4,31 @@ Riot assertions for Mongoid
 
 ## Examples
 
+The best way to explain is always with an example.
+
+So given a model like:
+
+```ruby
+class Photo
+  include Mongoid::Document
+
+  field :title,   :type => String
+  field :caption, :type => String, :default => ""
+
+  referenced_in,   :account
+  references_many, :comments
+  embedded_in,     :customer, :class_name => "Person"
+
+  validates_presence_of :caption
+
+  validates :states, :inclusion_of_set => { :in => [1, 2, 3] }
+
+  key :title, :caption
+end
+```
+
+Your riot test would look something like:
+
 ```ruby
 context "Photo Model" do
 
@@ -23,7 +48,7 @@ context "Photo Model" do
     asserts_topic.has_validation :validates_presence_of, :caption
 
     # support for custom validators, see the tests for a complete example
-    validates :states, :inclusion_of_set => { :in => [1, 2, 3] }
+    asserts_topic.has_validation :validates, :states, :inclusion_of_set => { :in => [1, 2, 3] }
 
     # key assertions
     asserts_topic.has_key :title, :caption
@@ -57,4 +82,4 @@ or check out the [master branch](http://github.com/thumblemonks/riot-mongoid/tre
 
 ## Copyright
 
-Copyright (c) 2011 gabrielg. See LICENSE for details.
+Copyright (c) 2011 gabrielg, Arthur Chiu. See LICENSE for details.
