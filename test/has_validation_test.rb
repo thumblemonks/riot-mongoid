@@ -41,7 +41,7 @@ context "has_validation macro" do
 
   asserts "returns useful message" do
     RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_presence_of, :name).last
-  end.matches(/has 'validates_presence_of' validation 'name'/)
+  end.matches(/Class has validation 'validates_presence_of :name'/)
 
   asserts "passes when the validation options is specified using within" do
     RiotMongoid::HasValidationAssertion.new.evaluate(topic, :validates_length_of, :surname, :within => 4..40).first
