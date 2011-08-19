@@ -12,7 +12,7 @@ Gem::Specification.new do |s|
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.summary = %q{Riot assertions for Mongoid}
-  s.add_dependency  "mongoid", "~> 2.0.0.beta.rc.7"
+  s.add_dependency  "mongoid", "~> 2.1.0"
   s.add_dependency  "riot",    "~> 0.12.3"
   s.add_development_dependency "yard", ">= 0"
 end
