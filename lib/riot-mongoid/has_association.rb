@@ -2,19 +2,20 @@ module RiotMongoid
   class HasAssociationAssertion < Riot::AssertionMacro
     register :has_association
 
-    def evaluate(model, *association_macro_info)
-      assoc_type, assoc_name, options = association_macro_info
-      assoc = model.relations[assoc_name.to_s]
-      options ||= {}
-      if assoc_name.nil?
-        fail("association name and potential options must be specified with this assertion macro")
-      elsif assoc.nil? || assoc.macro != assoc_type.to_sym
-        fail("expected #{model} to have association #{assoc_name} of type #{assoc_type}")
-      else
-        options_valid = options.all? { |key,value| assoc.send(key) == value }
-        options_valid ? pass("#{model} has '#{assoc_type}' association '#{assoc_name}' with options #{options.inspect}") :
-                        fail("expected model to have options #{options.inspect} on association #{assoc_name}")
+    def evaluate(model, type, field, options = {})
+      fail_msg = "expected #{model.class.to_s} to have assocation '#{type} :#{field}'"
+      pass_msg = "#{model.class.to_s} has association '#{type} :#{field}'"
+      opt_msg  = " with options #{options.inspect}"
+      assoc    = model.relations[field.to_s]
+
+      return fail(fail_msg) if assoc.nil? || assoc.macro != type.to_sym
+
+      unless options.empty?
+        return fail(fail_msg + opt_msg) unless options.all? { |k, v| assoc.send(k) == v }
+        return pass(pass_msg + opt_msg)
       end
+
+      pass pass_msg
     end
   end
 end

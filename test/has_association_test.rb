@@ -19,14 +19,9 @@ context "has_association macro" do
 
   asserts "returns useful message" do
     RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :embedded_in, :another_thing, :inverse_of => :word).last
-  end.matches(/has 'embedded_in' association 'another_thing' with options \{:inverse_of=>:word\}/)
+  end.matches(/Class has association 'embedded_in :another_thing' with options \{:inverse_of=>:word\}/)
 
   asserts "passes when the association options are specified for a references_many" do
     RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :references_many, :relations, :class_name => "Relation").first
   end.equals(:pass)
-
-  asserts "fails when no association name is specified" do
-    RiotMongoid::HasAssociationAssertion.new.evaluate(topic, :has_many_related).first
-  end.equals(:fail)
-
 end
